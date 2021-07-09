@@ -1,0 +1,7 @@
+<ul class="pagination">
+  <li class="page-item"><a class="page-link" (click)="previous()">Previous</a></li>
+  <li *ngFor='let in of counter(displayedPages) ;let i = index' class="page-item" [ngClass]="currentPage == (i + currentSlide)  ? 'active' : ''">
+    <a class="page-link" *ngIf="(i + currentSlide) <= PageCount" (click)="go(i + currentSlide)">{{i + currentSlide}}</a>
+  </li>
+  <li class="page-item"><a class="page-link" (click)="next()">Next</a></li>
+</ul>
