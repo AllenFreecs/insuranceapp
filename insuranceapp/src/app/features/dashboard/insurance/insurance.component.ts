@@ -1,8 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { InsuranceCountRequest, InsuranceInfoDTO, InsurancePageRequest } from 'src/app/api/models';
 import { InsuranceService } from 'src/app/api/services';
+import { PagerComponent } from 'src/app/shared/pager/pager.component';
 import { createInsuranceFilterFormGroup } from './insurance.formgroup.create';
 
 @Component({
@@ -17,6 +18,9 @@ export class InsuranceComponent implements OnInit {
   pageCount!:number;
   disabled!: boolean;
   recordCount!: number;
+
+  @ViewChild(PagerComponent)
+  pager!: PagerComponent;
 
   constructor(private insuranceService: InsuranceService, private cd: ChangeDetectorRef, private formBuilder: FormBuilder) { }
 
@@ -79,8 +83,8 @@ export class InsuranceComponent implements OnInit {
         this.cd.detectChanges();
       })); 
   }
-  apply(data:any){
-    
+  apply(){
+    this.disabled = true;
     const countrequest: InsuranceCountRequest = {
       FirstName: this.insuranceInfoFilterFormGroup.get('firstName')?.value,
       MiddleName: this.insuranceInfoFilterFormGroup.get('middleName')?.value,
@@ -107,6 +111,7 @@ export class InsuranceComponent implements OnInit {
       this.pageCount = this.getPageSize(data);
       this.recordCount = data;
       this.loadInsurance(request);
+      this.disabled = false;
       this.cd.detectChanges();
     },
     ((error: HttpErrorResponse) => {
@@ -132,9 +137,24 @@ export class InsuranceComponent implements OnInit {
   edit(id: any){
     window.open('dashboard/insurance/' + id)
   }
-  delete(id: any){
-    console.log(id);
-    // window.open('dashboard/insurance/' + id)
+  delete(id: any , row: any){
+    this.pager.currentPage = 1;
+    // const app  = document.getElementById(row);
+    // app?.remove();
+    // this.recordCount = this.recordCount -1;
+    this.insuranceService.DeleteInsuranceData([id]).subscribe( data => {
+      // this.pageCount = this.getPageSize(data);
+      // this.recordCount = data;
+      this.apply();
+      this.cd.detectChanges();
+    },
+    ((error: HttpErrorResponse) => {
+      alert(error);
+      this.cd.detectChanges();
+    })); 
+    
+ 
+
   }
   add(){
     window.open('dashboard/insurance/Add');
