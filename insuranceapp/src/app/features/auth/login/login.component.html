@@ -1,0 +1,53 @@
+
+<div [formGroup]="loginFormGroup" class="card center" style="margin-top: 100px; width: 420px !important;" >
+    <div class="card-body" style="background-color:#E7E9EB">Insurance App</div>
+    <div class="card-body">
+    <div class="form-row">
+       <div class ="col-md-10">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" formControlName="userName" class="form-control" id="username"
+            [ngClass]="{'is-invalid': (loginFormGroup.get('userName')?.touched ||
+            loginFormGroup.get('userName')?.dirty) &&
+            !loginFormGroup.get('userName')?.valid }">
+            <span class="invalid-feedback">
+                <span *ngIf="loginFormGroup.controls['userName']?.errors">
+                  Username is required.
+                </span>
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" formControlName="passWord" class="form-control" id="password"
+            [ngClass]="{'is-invalid': (loginFormGroup.get('passWord')?.touched ||
+            loginFormGroup.get('passWord')?.dirty) &&
+            !loginFormGroup.get('passWord')?.valid }">
+            <span class="invalid-feedback">
+                <span *ngIf="loginFormGroup.controls['passWord']?.errors && !loginFormGroup.get('passWord')?.getError('custom') &&  !loginFormGroup.get('passWord')?.getError('required') ">
+                  Invalid username or password.
+                </span>
+                <span  *ngIf="loginFormGroup.get('passWord')?.getError('required')">
+                  Password is required.
+                </span>
+               <span  *ngIf="loginFormGroup.get('passWord')?.getError('custom')">
+                  {{loginFormGroup.get('passWord')?.getError('custom')}}
+                </span>
+            </span>
+        </div>
+        <br>
+        
+        <div class="form-group">
+            <button type="button" class="btn btn-primary" (click)="login()">Login</button>
+        </div>
+        
+       </div>
+
+    </div>
+
+
+    </div>
+
+
+    
+
+</div>

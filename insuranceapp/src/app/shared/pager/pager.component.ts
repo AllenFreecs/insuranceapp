@@ -7,8 +7,9 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 })
 export class PagerComponent implements OnInit,OnChanges {
   @Input() PageCount!:number;
+  @Input() RecordCount!:number;
   @Input() PageSize!:number;
-  slides:number = 1; // default
+  slides:number = 18; // default
   currentSlide:number = 1;
   displayedPages:number= 0;
   currentPage:number = 1;
@@ -19,7 +20,7 @@ export class PagerComponent implements OnInit,OnChanges {
   }
 
   ngOnInit(): void {
-    if(this.PageCount < 18) {
+    if(this.PageCount < this.slides) {
       this.displayedPages = this.PageCount;
     } else {
       this.displayedPages = this.slides;
@@ -34,6 +35,11 @@ export class PagerComponent implements OnInit,OnChanges {
       this.currentSlide = this.currentSlide - this.slides;
       this.currentPage = this.currentSlide;
       this.Navigate.emit(this.currentPage);
+    } else {
+      if(this.currentPage != 1) {
+        this.currentPage = this.currentPage -1;
+        this.Navigate.emit(this.currentPage);
+      }
     }
   }
   next(){
@@ -41,6 +47,11 @@ export class PagerComponent implements OnInit,OnChanges {
       this.currentSlide = this.currentSlide + this.slides;
       this.currentPage = this.currentSlide;
       this.Navigate.emit(this.currentPage);
+    } else {
+      if(this.currentPage < this.RecordCount) {
+        this.currentPage = this.currentPage + 1;
+        this.Navigate.emit(this.currentPage);
+      }
     }
   }
   counter(i: number) {

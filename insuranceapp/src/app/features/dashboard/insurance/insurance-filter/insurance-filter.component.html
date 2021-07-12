@@ -1,0 +1,64 @@
+<div class="card custom">
+    <!-- <div class="card-body">Primary card</div> -->
+  
+    <div class="card-header bg-primary text-white">Filter</div>
+    <div [formGroup]="parent" class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="lname">Last Name:</label>
+            <input type="text" formControlName="lastName" class="form-control" placeholder="Last Name" id="lname">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="fname">First Name:</label>
+            <input type="text" formControlName="firstName" class="form-control" placeholder="First Name" id="fname">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="fname">Middle Name:</label>
+            <input type="text" formControlName="middleName" class="form-control" placeholder="Middle Name" id="mname">
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="basicSalaryStart">Basic Salary Start:</label>
+            <input type="text" formControlName="basicSalaryStart" class="form-control" placeholder="From" id="basicSalaryStart">
+          </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+              <label for="basicSalaryEnd">Basic Salary End:</label>
+              <input type="text" formControlName="basicSalaryEnd" class="form-control" placeholder="To" id="basicSalaryEnd">
+            </div>
+          </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="startDate">Birth Date Start:</label>
+            <input type="date" formControlName="startDate" class="form-control" placeholder="From" id="startDate">
+          </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+              <label for="endDate">Birth Date End:</label>
+              <input type="date" formControlName="endDate" class="form-control" placeholder="To" id="endDate">
+            </div>
+          </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-4 offset-md-4">
+          <button type="button" style="width: 300px;" class="btn btn-primary fa fa-filter" (click)="apply()"> Apply Filter</button>
+        </div>
+      </div>
+    </div>
+  
+  </div>  

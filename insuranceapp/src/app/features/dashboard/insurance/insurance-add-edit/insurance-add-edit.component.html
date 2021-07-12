@@ -1,0 +1,117 @@
+<app-nav></app-nav>
+
+<body>
+  <div style="margin-top: 50px;"></div>
+    <div class="card custom center">
+        <div class="card-header bg-primary text-white">Insurance</div>
+        <div [formGroup]="insuranceFormGroup" class="card-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="lname">Last Name:</label>
+                <input type="text" formControlName="lastName" class="form-control" placeholder="Last Name" id="lname"  [ngClass]="{'is-invalid': (insuranceFormGroup.get('lastName')?.touched ||
+                insuranceFormGroup.get('lastName')?.dirty) &&
+                !insuranceFormGroup.get('lastName')?.valid }">
+                <span class="invalid-feedback">
+                  <span *ngIf="insuranceFormGroup.controls['lastName']?.errors">
+                    Last Name is required.
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="fname">First Name:</label>
+                <input type="text" formControlName="firstName" class="form-control" placeholder="First Name" id="fname" [ngClass]="{'is-invalid': (insuranceFormGroup.get('firstName')?.touched ||
+                insuranceFormGroup.get('firstName')?.dirty) &&
+                !insuranceFormGroup.get('firstName')?.valid }">
+                <span class="invalid-feedback">
+                  <span *ngIf="insuranceFormGroup.controls['firstName']?.errors">
+                    First Name is required.
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="fname">Middle Name:</label>
+                <input type="text" formControlName="middleName" class="form-control" placeholder="Middle Name" id="mname" [ngClass]="{'is-invalid': (insuranceFormGroup.get('middleName')?.touched ||
+                insuranceFormGroup.get('middleName')?.dirty) &&
+                !insuranceFormGroup.get('middleName')?.valid }">
+                <span class="invalid-feedback">
+                  <span *ngIf="insuranceFormGroup.controls['middleName']?.errors">
+                    Middle Name is required.
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="basicSalary">Basic Salary:</label>
+                <input type="text" formControlName="basicSalary" class="form-control" placeholder="Basic Salary" id="basicSalary" [ngClass]="{'is-invalid': (insuranceFormGroup.get('basicSalary')?.touched ||
+                insuranceFormGroup.get('basicSalary')?.dirty) &&
+                !insuranceFormGroup.get('basicSalary')?.valid }">
+                <span class="invalid-feedback">
+                  <span *ngIf="insuranceFormGroup.controls['basicSalary']?.errors">
+                    Basic Salary is required.
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="birthDate">Birth Date:</label>
+                <input type="date" formControlName="birthDate" class="form-control" placeholder="Birth Date" id="birthDate" [ngClass]="{'is-invalid': (insuranceFormGroup.get('birthDate')?.touched ||
+                insuranceFormGroup.get('birthDate')?.dirty) &&
+                !insuranceFormGroup.get('birthDate')?.valid }">
+                <span class="invalid-feedback">
+                  <span *ngIf="insuranceFormGroup.controls['birthDate']?.errors">
+                    Birth Date is required.
+                  </span>
+                </span>
+
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-4 offset-md-8">
+              <button type="button" style="width: 300px;" class="btn btn-primary fa fa-save" [disabled]="!insuranceFormGroup.valid || !insuranceFormGroup.dirty" (click)="save()"> Save and Calculate</button>
+            </div>
+          </div>
+        </div>
+      
+    </div>
+    <br>
+    <div class="center" style="width: 950px;">
+      <table class="table table-striped">
+        <!-- <div class="row">
+            <div class="col-md-2 offset-md-9">
+               <span class="breadcrumb">Record Count: {{recordCount}}</span> 
+            </div>
+        </div> -->
+        <thead>
+          <tr>
+            <th>Multiple</th>
+            <th>Benefit Amount Quotation</th>
+            <th>Pended Amount</th>
+            <th>Benefits</th>
+            <!-- <th></th> -->
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let detail of insuranceInfoDetailDTO'>
+                <td>{{detail.Multiple}}</td>
+                <td>{{detail.BenefitsAmountQuotation | currency:'₱'}}</td>
+                <td>{{detail.PendedAmount | currency:'₱'}}</td>
+                <td *ngIf="detail.Benefits != 'For Approval'">{{detail.Benefits | currency:'₱' }}</td>
+                <td *ngIf="detail.Benefits == 'For Approval'">{{detail.Benefits }}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+</body>

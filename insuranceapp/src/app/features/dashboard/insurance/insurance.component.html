@@ -1,0 +1,65 @@
+<!-- <p>insurance works!</p> -->
+<app-nav></app-nav>
+
+<body>
+  <div class="row">
+    <!-- <app-ticket-violation-filter [parent]='ticketViolationFilterFormGroup' (applyFilter)="apply($event)"></app-ticket-violation-filter> -->
+    <app-insurance-filter [parent]='insuranceInfoFilterFormGroup' (applyFilter)="apply($event)"></app-insurance-filter>
+  </div>
+  <br>
+  <div class="row">
+    <app-spinner [disabled]="disabled"></app-spinner>
+    <div style="width: 1000px;">
+        <!-- <button type="button" class="btn btn-primary fa fa-plus"></button> -->
+    
+        <div class="row">
+          <div class="col-md-3 offset-md-9">
+            <button type="button" style="width: 200px; margin-bottom: 5px;" class="btn btn-primary fa fa-plus" (click)="add()"> Add New</button>
+          </div>
+        </div>
+        <table class="table table-striped">
+            <!-- <div class="row">
+                <div class="col-md-2 offset-md-9">
+                   <span class="breadcrumb">Record Count: {{recordCount}}</span> 
+                </div>
+            </div> -->
+            <thead>
+              <tr>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Basic Salary</th>
+                <th>Birth Date</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let insuranceInfo of insuranceInfoList'>
+                    <td>{{insuranceInfo.LastName}}</td>
+                    <td>{{insuranceInfo.FirstName}}</td>
+                    <td>{{insuranceInfo.MiddleName}}</td>
+                    <td>{{insuranceInfo.BasicSalary | currency:'₱'}}</td>
+                    <td>{{insuranceInfo.BirthDate | date}}</td>
+                    <td><button type="button" class="btn btn-primary fa fa-edit" (click)="edit(insuranceInfo.ID)"> Edit</button> &nbsp;
+                        <button type="button" class="btn btn-primary fa fa-trash"(click)="delete(insuranceInfo.ID)"> Delete</button>
+                    </td>
+                    <!-- <td><button type="button" class="btn btn-primary fa fa-trash"> Delete</button></td> -->
+                    <!-- <td><button type="button" [disabled] = "ticketViolation.IsPayed" class="btn btn-primary fa fa-thumbs-up" (click)="settle(ticketViolation.ID)"> Settle</button></td> -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+  </div>
+  <div class="row">
+      <div class="col-md-8">
+        <app-pager [RecordCount]="recordCount" [PageCount]="pageCount" (Navigate)="Navigate($event)"></app-pager>
+      </div>
+      <div class="col-md-2">
+        <span class="breadcrumb">Record Count: {{recordCount}}</span> 
+      </div>
+  </div>
+
+
+ 
+</body>
