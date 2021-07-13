@@ -8,6 +8,7 @@ import { HeartbeatComponent } from './heartbeat/heartbeat.component';
 import { NavComponent } from './nav/nav.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { PagerComponent } from './pager/pager.component';
+import { CurrencyComponent } from './controls/currency/currency.component';
 
 @NgModule({
   imports: [
@@ -21,13 +22,15 @@ import { PagerComponent } from './pager/pager.component';
     HeartbeatComponent,
     NavComponent,
     SpinnerComponent,
-    PagerComponent
+    PagerComponent,
+    CurrencyComponent
   ],
   declarations: [
     HeartbeatComponent,
     NavComponent,
     SpinnerComponent,
-    PagerComponent
+    PagerComponent,
+    CurrencyComponent
   ],
   providers: [CookieService,{provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true}]
 })

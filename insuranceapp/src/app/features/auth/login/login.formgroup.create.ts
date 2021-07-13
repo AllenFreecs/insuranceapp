@@ -4,8 +4,8 @@ export function createLoginFormGroup(formBuilder: FormBuilder): FormGroup {
 
     return formBuilder.group({
      
-        userName:['SA', Validators.required],
-        passWord: ['Allen@123', (Validators.required)],
+        userName:['', Validators.required],
+        passWord: ['', (Validators.required)],
     });
 
 }

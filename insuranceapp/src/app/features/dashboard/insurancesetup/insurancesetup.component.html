@@ -1,0 +1,138 @@
+<app-heartbeat></app-heartbeat>
+<app-nav></app-nav>
+<div class="card center" style="margin-top: 100px;">
+    <!-- <div class="card-body">Primary card</div> -->
+  
+    <div class="card-header bg-primary text-white">Filter</div>
+    <div [formGroup]="insuranceSetupFormGroup" class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="gi">Guaranteed Issue:</label>
+            <input type="number" formControlName="guaranteedIssue" pattern="\d*" maxlength="3" class="form-control" placeholder="Guaranteed Issue" id="gi" [ngClass]="{'is-invalid': (insuranceSetupFormGroup.get('guaranteedIssue')?.touched ||
+            insuranceSetupFormGroup.get('guaranteedIssue')?.dirty) &&
+            !insuranceSetupFormGroup.get('guaranteedIssue')?.valid }">
+            <span class="invalid-feedback">
+                <span *ngIf="insuranceSetupFormGroup.controls['guaranteedIssue']?.hasError('required')">
+                    Guaranteed Issue is required.
+                </span>
+                <span *ngIf="this.insuranceSetupFormGroup.get('guaranteedIssue')?.hasError('max')">
+                    Guaranteed Issue maxlength is {{insuranceSetupFormGroup.get('guaranteedIssue')?.errors?.max?.max}}.
+                 </span>
+                 <span *ngIf="this.insuranceSetupFormGroup.get('guaranteedIssue')?.hasError('min')">
+                    Guaranteed Issue minlength is {{insuranceSetupFormGroup.get('guaranteedIssue')?.errors?.min?.min}}.
+                 </span>
+              </span>
+          </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="minAgeLimit">Min Age Limit:</label>
+                <input type="number" formControlName="minAgeLimit" (blur)= "updateagerange()" pattern="\d*" maxlength="3" class="form-control" placeholder="Min Age Limit" id="minAgeLimit" [ngClass]="{'is-invalid': (insuranceSetupFormGroup.get('minAgeLimit')?.touched ||
+                insuranceSetupFormGroup.get('minAgeLimit')?.dirty) &&
+                !insuranceSetupFormGroup.get('minAgeLimit')?.valid }">
+                <span class="invalid-feedback">
+                    <span *ngIf="insuranceSetupFormGroup.controls['minAgeLimit']?.hasError('required')">
+                        Min Age Limit is required.
+                    </span>
+                    <span *ngIf="this.insuranceSetupFormGroup.get('minAgeLimit')?.hasError('max')">
+                        Min Age allowed maxlength is {{insuranceSetupFormGroup.get('minAgeLimit')?.errors?.max?.max}}.
+                     </span>
+                     <span *ngIf="this.insuranceSetupFormGroup.get('minAgeLimit')?.hasError('min')">
+                        Min Age allowed minlength is {{insuranceSetupFormGroup.get('minAgeLimit')?.errors?.min?.min}}.
+                     </span>
+                </span>
+
+              </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="maxAgeLimit">Max Age Limit:</label>
+            <input type="number" formControlName="maxAgeLimit" (blur)= "updateagerange()" pattern="\d*" maxlength="3" class="form-control" placeholder="Max Age Limit" id="maxAgeLimit" [ngClass]="{'is-invalid': (insuranceSetupFormGroup.get('maxAgeLimit')?.touched ||
+            insuranceSetupFormGroup.get('maxAgeLimit')?.dirty) &&
+            !insuranceSetupFormGroup.get('maxAgeLimit')?.valid }">
+            <span class="invalid-feedback">
+                <span *ngIf="insuranceSetupFormGroup.controls['maxAgeLimit']?.hasError('required')">
+                    Max Age Limit is required.
+                </span>
+                <span *ngIf="this.insuranceSetupFormGroup.get('maxAgeLimit')?.hasError('max')">
+                    Max Age allowed maxlength is {{insuranceSetupFormGroup.get('maxAgeLimit')?.errors?.max?.max}}.
+                 </span>
+                 <span *ngIf="this.insuranceSetupFormGroup.get('maxAgeLimit')?.hasError('min')">
+                    Max Age allowed minlength is {{insuranceSetupFormGroup.get('maxAgeLimit')?.errors?.min?.min}}.
+                 </span>
+            </span>
+
+          </div>
+        </div>
+
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="mr">Minimum Range:</label>
+            <input type="number" formControlName="minimumRange" pattern="\d*" (blur)="updaterange()" class="form-control" placeholder="Minimum Range" id="mr" [ngClass]="{'is-invalid': (insuranceSetupFormGroup.get('minimumRange')?.touched ||
+            insuranceSetupFormGroup.get('minimumRange')?.dirty) &&
+            !insuranceSetupFormGroup.get('minimumRange')?.valid }">
+            <span class="invalid-feedback">
+                <span *ngIf="this.insuranceSetupFormGroup.get('minimumRange')?.hasError('required')">
+                    Minimum Range is required.
+                </span>
+                <span *ngIf="this.insuranceSetupFormGroup.get('minimumRange')?.hasError('max')">
+                    Minimum Range allowed maxlength is {{insuranceSetupFormGroup.get('minimumRange')?.errors?.max?.max}}.
+                 </span>
+                 <span *ngIf="this.insuranceSetupFormGroup.get('minimumRange')?.hasError('min')">
+                    Minimum Range allowed minlength is {{insuranceSetupFormGroup.get('minimumRange')?.errors?.min?.min}}.
+                 </span>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="maxrange">Maximum Range:</label>
+            <input type="number" formControlName="maximumRange" pattern="\d*" (blur)="updaterange()" maxlength="3" class="form-control" placeholder="Maximum Range" id="maxrange" [ngClass]="{'is-invalid': (insuranceSetupFormGroup.get('maximumRange')?.touched ||
+            insuranceSetupFormGroup.get('maximumRange')?.dirty) &&
+            !insuranceSetupFormGroup.get('maximumRange')?.valid }">
+            <span class="invalid-feedback">
+                    <span *ngIf="this.insuranceSetupFormGroup.get('maximumRange')?.hasError('required')">
+                        Maximum Range is required.
+                    </span>
+                    <span *ngIf="this.insuranceSetupFormGroup.get('maximumRange')?.hasError('max')">
+                        Maximum Range allowed maxlength is {{insuranceSetupFormGroup.get('maximumRange')?.errors?.max?.max}}.
+                     </span>
+                     <span *ngIf="this.insuranceSetupFormGroup.get('maximumRange')?.hasError('min')">
+                        Maximum Range allowed minlength is {{insuranceSetupFormGroup.get('maximumRange')?.errors?.min?.min}}.
+                     </span>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="increments">Increments:</label>
+                <input type="number" pattern="\d*" formControlName="increments" class="form-control" placeholder="Increments" id="increments" [ngClass]="{'is-invalid': (insuranceSetupFormGroup.get('increments')?.touched ||
+                insuranceSetupFormGroup.get('increments')?.dirty) &&
+                !insuranceSetupFormGroup.get('increments')?.valid }">
+                <span class="invalid-feedback">
+                    <span *ngIf="this.insuranceSetupFormGroup.get('increments')?.hasError('required')">
+                       Increments is required.
+                    </span>
+                    <span *ngIf="this.insuranceSetupFormGroup.get('increments')?.hasError('min')">
+                        Increments allowed minlength is {{insuranceSetupFormGroup.get('increments')?.errors?.min?.min}}.
+                     </span>
+                    <span *ngIf="this.insuranceSetupFormGroup.get('increments')?.hasError('max')">
+                        Increments allowed maxlength is {{insuranceSetupFormGroup.get('increments')?.errors?.max?.max}}.
+                     </span>
+                </span>
+              </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-4 offset-md-8">
+          <button type="button" style="width: 300px;"  [disabled]="!insuranceSetupFormGroup.valid || !insuranceSetupFormGroup.dirty" (click)=saveSetup()  class="btn btn-primary fa fa-save"> Save</button>
+        </div>
+      </div>
+    </div>
+  
+  </div>  

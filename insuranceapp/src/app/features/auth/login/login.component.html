@@ -1,6 +1,13 @@
 
-<div [formGroup]="loginFormGroup" class="card center" style="margin-top: 100px; width: 420px !important;" >
-    <div class="card-body" style="background-color:#E7E9EB">Insurance App</div>
+<!--   
+<div class="test">
+
+
+
+</div> -->
+<body>
+  <div [formGroup]="loginFormGroup" class="card center" style="margin-top:200px;  width: 420px !important;" >
+    <div class="card-body" style="background-color:#b4c0cc">Insurance App</div>
     <div class="card-body">
     <div class="form-row">
        <div class ="col-md-10">
@@ -22,7 +29,7 @@
             [ngClass]="{'is-invalid': (loginFormGroup.get('passWord')?.touched ||
             loginFormGroup.get('passWord')?.dirty) &&
             !loginFormGroup.get('passWord')?.valid }">
-            <span class="invalid-feedback">
+            <span id="inv" class="invalid-feedback">
                 <span *ngIf="loginFormGroup.controls['passWord']?.errors && !loginFormGroup.get('passWord')?.getError('custom') &&  !loginFormGroup.get('passWord')?.getError('required') ">
                   Invalid username or password.
                 </span>
@@ -37,7 +44,7 @@
         <br>
         
         <div class="form-group">
-            <button type="button" class="btn btn-primary" (click)="login()">Login</button>
+            <button type="button" class="btn btn-primary" id="login" (click)="login()">Login</button>
         </div>
         
        </div>
@@ -51,3 +58,4 @@
     
 
 </div>
+</body>

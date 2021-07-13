@@ -44,9 +44,10 @@ export class InsuranceAddEditComponent implements OnInit {
       this.insuranceService.GetInsuranceData(this.id).subscribe((data:InsuranceInfoDTO) => {
         this.insuranceFormGroup = createInsuranceFormGroup(this.formBuilder,data)
         this.insuranceInfoDetailDTO = data?.InsuranceInfoDetail;
+        
       },
       ((error: HttpErrorResponse) => {
-        alert(error);
+        window.location.href = "NotFound";
         this.cd.detectChanges();
       }));    
     }
@@ -61,9 +62,14 @@ export class InsuranceAddEditComponent implements OnInit {
       BirthDate: this.insuranceFormGroup.get('birthDate')?.value,
       BasicSalary: this.insuranceFormGroup.get('basicSalary')?.value,
     }
-    console.log(model);
     this.insuranceService.SaveInsuranceData(model).subscribe((data: GlobalResponseDTO) => {
-    window.location.href = "dashboard/insurance/" + data.ID;
+      if(data.IsSuccess) {
+        window.location.href = "dashboard/insurance/" + data.ID;
+      } else
+      {
+        alert(data.Message);
+      }
+
     },
     ((error: HttpErrorResponse) => {
       alert(error);
