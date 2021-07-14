@@ -9,7 +9,7 @@
         <div class="col-md-4">
           <div class="form-group">
             <label for="gi">Guaranteed Issue:</label>
-            <input type="number" formControlName="guaranteedIssue" pattern="\d*" maxlength="3" class="form-control" placeholder="Guaranteed Issue" id="gi" [ngClass]="{'is-invalid': (insuranceSetupFormGroup.get('guaranteedIssue')?.touched ||
+            <input type="number" formControlName="guaranteedIssue" (keypress)="checkInput($event)" pattern="\d*" maxlength="3" class="form-control" placeholder="Guaranteed Issue" id="gi" [ngClass]="{'is-invalid': (insuranceSetupFormGroup.get('guaranteedIssue')?.touched ||
             insuranceSetupFormGroup.get('guaranteedIssue')?.dirty) &&
             !insuranceSetupFormGroup.get('guaranteedIssue')?.valid }">
             <span class="invalid-feedback">
@@ -28,7 +28,7 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label for="minAgeLimit">Min Age Limit:</label>
-                <input type="number" formControlName="minAgeLimit" (blur)= "updateagerange()" pattern="\d*" maxlength="3" class="form-control" placeholder="Min Age Limit" id="minAgeLimit" [ngClass]="{'is-invalid': (insuranceSetupFormGroup.get('minAgeLimit')?.touched ||
+                <input type="number" formControlName="minAgeLimit" (keypress)="checkInput($event)" (blur)= "updateagerange()" pattern="\d*" maxlength="3" class="form-control" placeholder="Min Age Limit" id="minAgeLimit" [ngClass]="{'is-invalid': (insuranceSetupFormGroup.get('minAgeLimit')?.touched ||
                 insuranceSetupFormGroup.get('minAgeLimit')?.dirty) &&
                 !insuranceSetupFormGroup.get('minAgeLimit')?.valid }">
                 <span class="invalid-feedback">
@@ -48,7 +48,7 @@
         <div class="col-md-4">
           <div class="form-group">
             <label for="maxAgeLimit">Max Age Limit:</label>
-            <input type="number" formControlName="maxAgeLimit" (blur)= "updateagerange()" pattern="\d*" maxlength="3" class="form-control" placeholder="Max Age Limit" id="maxAgeLimit" [ngClass]="{'is-invalid': (insuranceSetupFormGroup.get('maxAgeLimit')?.touched ||
+            <input type="number" formControlName="maxAgeLimit" (keypress)="checkInput($event)" (blur)= "updateagerange()" pattern="\d*" maxlength="3" class="form-control" placeholder="Max Age Limit" id="maxAgeLimit" [ngClass]="{'is-invalid': (insuranceSetupFormGroup.get('maxAgeLimit')?.touched ||
             insuranceSetupFormGroup.get('maxAgeLimit')?.dirty) &&
             !insuranceSetupFormGroup.get('maxAgeLimit')?.valid }">
             <span class="invalid-feedback">
@@ -72,7 +72,7 @@
         <div class="col-md-4">
           <div class="form-group">
             <label for="mr">Minimum Range:</label>
-            <input type="number" formControlName="minimumRange" pattern="\d*" (blur)="updaterange()" class="form-control" placeholder="Minimum Range" id="mr" [ngClass]="{'is-invalid': (insuranceSetupFormGroup.get('minimumRange')?.touched ||
+            <input type="number" formControlName="minimumRange" (keypress)="checkInput($event)" pattern="\d*" (blur)="updaterange()" class="form-control" placeholder="Minimum Range" id="mr" [ngClass]="{'is-invalid': (insuranceSetupFormGroup.get('minimumRange')?.touched ||
             insuranceSetupFormGroup.get('minimumRange')?.dirty) &&
             !insuranceSetupFormGroup.get('minimumRange')?.valid }">
             <span class="invalid-feedback">
@@ -91,7 +91,7 @@
         <div class="col-md-4">
           <div class="form-group">
             <label for="maxrange">Maximum Range:</label>
-            <input type="number" formControlName="maximumRange" pattern="\d*" (blur)="updaterange()" maxlength="3" class="form-control" placeholder="Maximum Range" id="maxrange" [ngClass]="{'is-invalid': (insuranceSetupFormGroup.get('maximumRange')?.touched ||
+            <input type="number" formControlName="maximumRange" (keypress)="checkInput($event)" pattern="\d*" (blur)="updaterange()" maxlength="3" class="form-control" placeholder="Maximum Range" id="maxrange" [ngClass]="{'is-invalid': (insuranceSetupFormGroup.get('maximumRange')?.touched ||
             insuranceSetupFormGroup.get('maximumRange')?.dirty) &&
             !insuranceSetupFormGroup.get('maximumRange')?.valid }">
             <span class="invalid-feedback">
@@ -110,7 +110,7 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label for="increments">Increments:</label>
-                <input type="number" pattern="\d*" formControlName="increments" class="form-control" placeholder="Increments" id="increments" [ngClass]="{'is-invalid': (insuranceSetupFormGroup.get('increments')?.touched ||
+                <input type="number" pattern="\d*" (keypress)="checkInput($event)" formControlName="increments" class="form-control" placeholder="Increments" id="increments" [ngClass]="{'is-invalid': (insuranceSetupFormGroup.get('increments')?.touched ||
                 insuranceSetupFormGroup.get('increments')?.dirty) &&
                 !insuranceSetupFormGroup.get('increments')?.valid }">
                 <span class="invalid-feedback">

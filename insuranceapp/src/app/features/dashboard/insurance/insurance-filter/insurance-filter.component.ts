@@ -14,7 +14,21 @@ export class InsuranceFilterComponent implements OnInit {
   ngOnInit(): void {
   }
   apply(){
-    this.applyFilter.emit(this.parent);
+     if(this.parent.get('basicSalaryEnd')?.value < this.parent.get('basicSalaryStart')?.value)
+     {
+        return alert('Invalid Range.')
+     }
+     if(this.parent.get('endDate')?.value < this.parent.get('startDate')?.value)
+     {
+       return alert('Invalid Range.')
+     }
+     this.applyFilter.emit(this.parent);
+  }
+  checkInput(event: any) {
+    if (event.which < 48 || event.which > 57)
+    {
+      event.preventDefault();
+    }
   }
 
 }

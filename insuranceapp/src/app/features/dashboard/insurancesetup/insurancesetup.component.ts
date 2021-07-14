@@ -77,6 +77,12 @@ export class InsurancesetupComponent implements OnInit {
     }
   
     }
+  checkInput(event: any) {
+    if (event.which < 48 || event.which > 57)
+    {
+      event.preventDefault();
+    }
+  }
 
 
 

@@ -29,13 +29,13 @@
         <div class="col-md-4">
           <div class="form-group">
             <label for="basicSalaryStart">Basic Salary Start:</label>
-            <input type="text" formControlName="basicSalaryStart" class="form-control" placeholder="From" id="basicSalaryStart">
+            <input type="number" (keypress)="checkInput($event)" formControlName="basicSalaryStart" class="form-control" placeholder="From" id="basicSalaryStart">
           </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
               <label for="basicSalaryEnd">Basic Salary End:</label>
-              <input type="text" formControlName="basicSalaryEnd" class="form-control" placeholder="To" id="basicSalaryEnd">
+              <input type="number" (keypress)="checkInput($event)" formControlName="basicSalaryEnd" class="form-control" placeholder="To" id="basicSalaryEnd">
             </div>
           </div>
       </div>
